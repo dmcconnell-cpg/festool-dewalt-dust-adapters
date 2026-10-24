@@ -15,6 +15,23 @@ Also included: fit-test rings, dual-port branch cap, blade-guard hose coupler, a
 
 See `docs/adapter-design-notes.md` for dimensions, print tips, and fit history.
 
+## STL files
+
+Binary STLs are stored as zlib+base64 packs (`*.stl.zb64`) and/or chunked under `stl-chunks/`.
+
+```bash
+# join chunks (if present) then decode packs to binary .stl
+python3 internal/assemble-stl-chunks.py
+python3 internal/decode-stl-zb64.py
+```
+
+Or regenerate from sources (needs `build123d`, `trimesh`, `manifold3d`):
+
+```bash
+python3 internal/festool-dewalt-dw735-adapter.py
+# …other scripts in internal/
+```
+
 ## Print
 
 - **Material:** PETG preferred
